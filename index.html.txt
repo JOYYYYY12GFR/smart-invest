@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartInvest | 新手投資導航</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', "Microsoft JhengHei", sans-serif; background-color: #f1f5f9; }
+        
+        /* 頁面切換動畫與顯示邏輯 */
+        .page-content { display: none; animation: fadeIn 0.4s ease-out; }
+        .page-active { display: block; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-link-active { color: #10b981; border-bottom: 2px solid #10b981; }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <nav class="sticky top-0 z-50 bg-white shadow-sm border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center text-white font-bold">S</div>
+                <span class="text-xl font-bold text-slate-900">SmartInvest</span>
+            </div>
+            <!-- 跳轉按鈕：點擊執行 showPage 函式 -->
+            <div class="flex space-x-6 text-sm font-medium">
+                <button onclick="showPage('dashboard', this)" class="nav-btn nav-link-active pb-1">市場看板</button>
+                <button onclick="showPage('compare', this)" class="nav-btn text-slate-500 hover:text-emerald-500 pb-1">標的比對</button>
+                <button onclick="showPage('calculator', this)" class="nav-btn text-slate-500 hover:text-emerald-500 pb-1">複利計算</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        
+        <section id="dashboard" class="page-content page-active">
+            <div class="text-center mb-10">
+                <h1 class="text-3xl font-bold text-slate-900">今日熱門標的</h1>
+                <p class="text-slate-500 mt-2">快速掌握台灣市值型 ETF 動態</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="px-2 py-1 bg-emerald-100 text-emerald-700 text-xs font-bold rounded">市值型</span>
+                        <span class="text-emerald-500 font-bold">▲ 1.2%</span>
+                    </div>
+                    <p class="text-sm text-slate-400">0050 元大台灣 50</p>
+                    <h2 class="text-3xl font-bold text-slate-900 mt-1">$184.25</h2>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="px-2 py-1 bg-emerald-100 text-emerald-700 text-xs font-bold rounded">低內扣</span>
+                        <span class="text-emerald-500 font-bold">▲ 1.1%</span>
+                    </div>
+                    <p class="text-sm text-slate-400">006208 富邦台 50</p>
+                    <h2 class="text-3xl font-bold text-slate-900 mt-1">$105.10</h2>
+                </div>
+            </div>
+        </section>
+
+        <section id="compare" class="page-content">
+            <div class="text-center mb-10">
+                <h1 class="text-3xl font-bold text-slate-900">標的深度對決</h1>
+                <p class="text-slate-500 mt-2">魔鬼藏在細節裡，手續費是長期獲利的關鍵</p>
+            </div>
+            <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                <table class="w-full text-left">
+                    <thead class="bg-slate-50">
+                        <tr>
+                            <th class="p-5 font-semibold text-slate-600">比較項目</th>
+                            <th class="p-5 font-semibold text-slate-600">0050</th>
+                            <th class="p-5 font-semibold text-emerald-600 bg-emerald-50/50">006208 (推薦)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-sm">
+                        <tr><td class="p-5 font-medium">總經理管理費</td><td class="p-5">0.32%</td><td class="p-5 bg-emerald-50/20 text-emerald-700">0.15%</td></tr>
+                        <tr><td class="p-5 font-medium">內扣總費用</td><td class="p-5">0.43%</td><td class="p-5 bg-emerald-50/20 text-emerald-700">0.24%</td></tr>
+                        <tr><td class="p-5 font-medium">成分股數</td><td class="p-5">50 檔</td><td class="p-5 bg-emerald-50/20 text-emerald-700">50 檔</td></tr>
+                        <tr><td class="p-5 font-medium">適合對象</td><td class="p-5">追求流動性大戶</td><td class="p-5 bg-emerald-50/20 text-emerald-700">小資定期定額</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="calculator" class="page-content">
+            <div class="text-center mb-10">
+                <h1 class="text-3xl font-bold text-slate-900">複利夢想試算</h1>
+                <p class="text-slate-500 mt-2">看看現在的每一塊錢，在未來會變成多少</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 max-w-md mx-auto">
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-600 mb-2">每月投入金額 (TWD)</label>
+                        <input type="number" id="monthly" value="10000" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-600 mb-2">預計年化報酬率 (%)</label>
+                        <input type="number" id="rate" value="7" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-600 mb-2">投資年限 (年)</label>
+                        <input type="number" id="years" value="10" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 transition-all">
+                    </div>
+                    <button onclick="calculate()" class="w-full bg-emerald-500 text-white py-4 rounded-xl font-bold hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-200 transition-all">開始計算我的財富</button>
+                    <div id="calc-result" class="hidden text-center p-6 bg-emerald-50 rounded-xl">
+                        <p class="text-sm text-emerald-600 font-medium">預計資產成長至</p>
+                        <div id="result-value" class="text-3xl font-bold text-emerald-700 mt-1"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="fixed bottom-6 right-6 z-[100]">
+        <button onclick="toggleChat()" class="w-16 h-16 bg-emerald-500 rounded-full shadow-2xl flex items-center justify-center text-white text-3xl hover:scale-110 active:scale-95 transition-transform group">
+            <span class="group-hover:rotate-12 transition-transform">💬</span>
+        </button>
+        <div id="chat-box" class="hidden absolute bottom-20 right-0 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
+            <div class="bg-emerald-500 p-4 text-white font-bold flex justify-between items-center">
+                <span>投資小助手 AI</span>
+                <button onclick="toggleChat()" class="opacity-70 hover:opacity-100">✕</button>
+            </div>
+            <div id="chat-msgs" class="h-64 p-4 overflow-y-auto text-sm space-y-3 bg-slate-50">
+                <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm border border-slate-100">你好！我是 AI 助手，想了解 0050 還是如何試算複利呢？</div>
+            </div>
+            <div class="p-3 border-t bg-white flex gap-2">
+                <input type="text" id="chat-input" placeholder="請輸入問題..." class="flex-1 text-sm p-2 bg-slate-100 rounded-lg outline-none focus:ring-1 focus:ring-emerald-500">
+                <button onclick="sendMsg()" class="bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-bold">送出</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. 頁面切換控制
+        function showPage(pageId, btn) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('page-active'));
+            document.getElementById(pageId).classList.add('page-active');
+            
+            document.querySelectorAll('.nav-btn').forEach(b => {
+                b.classList.remove('nav-link-active', 'text-emerald-500');
+                b.classList.add('text-slate-500');
+            });
+            btn.classList.add('nav-link-active');
+            btn.classList.remove('text-slate-500');
+            window.scrollTo(0, 0);
+        }
+
+        // 2. 複利計算功能
+        function calculate() {
+            const m = parseFloat(document.getElementById('monthly').value);
+            const r = parseFloat(document.getElementById('rate').value) / 100 / 12;
+            const y = parseFloat(document.getElementById('years').value) * 12;
+            
+            if (isNaN(m) || isNaN(r) || isNaN(y)) return;
+            
+            const res = m * ((Math.pow(1 + r, y) - 1) / r) * (1 + r);
+            
+            const resultBox = document.getElementById('calc-result');
+            resultBox.classList.remove('hidden');
+            document.getElementById('result-value').innerText = `$${Math.round(res).toLocaleString()}`;
+        }
+
+        // 3. 聊天機器人邏輯
+        function toggleChat() {
+            document.getElementById('chat-box').classList.toggle('hidden');
+        }
+
+        function sendMsg() {
+            const input = document.getElementById('chat-input');
+            const container = document.getElementById('chat-msgs');
+            if (!input.value.trim()) return;
+
+            // 用戶訊息
+            const userDiv = document.createElement('div');
+            userDiv.className = "bg-emerald-500 text-white p-3 rounded-2xl rounded-tr-none shadow-sm ml-8 text-right";
+            userDiv.innerText = input.value;
+            container.appendChild(userDiv);
+            
+            const userMsg = input.value;
+            input.value = '';
+            container.scrollTop = container.scrollHeight;
+
+            // 模擬機器人回覆
+            setTimeout(() => {
+                const botDiv = document.createElement('div');
+                botDiv.className = "bg-white p-3 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 mr-8";
+                
+                if (userMsg.includes('0050')) {
+                    botDiv.innerText = "0050 是台灣最老牌的 ETF，雖然管理費較 006208 高，但規模大、流動性好，非常適合大資金配置喔！";
+                } else if (userMsg.includes('算')) {
+                    botDiv.innerText = "你可以點擊上方「複利計算」選單，輸入你的計畫，我會幫你算出未來的資產喔！";
+                } else {
+                    botDiv.innerText = "這是一個好問題！對於新手，我建議從「定期定額」市值型 ETF 開始，你可以先去「標的比對」頁面看看差異。";
+                }
+                
+                container.appendChild(botDiv);
+                container.scrollTop = container.scrollHeight;
+            }, 800);
+        }
+
+        // 綁定 Enter 鍵送出訊息
+        document.getElementById('chat-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') sendMsg();
+        });
+    </script>
+</body>
+</html>
