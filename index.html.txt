@@ -9,7 +9,7 @@
     <style>
         body { font-family: 'Inter', "Microsoft JhengHei", sans-serif; background-color: #f1f5f9; }
         
-        /* 頁面切換動畫與顯示邏輯 */
+        /* 頁面切換動畫 */
         .page-content { display: none; animation: fadeIn 0.4s ease-out; }
         .page-active { display: block; }
         
@@ -29,7 +29,7 @@
                 <div class="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center text-white font-bold">S</div>
                 <span class="text-xl font-bold text-slate-900">SmartInvest</span>
             </div>
-            <!-- 跳轉按鈕：點擊執行 showPage 函式 -->
+            <!-- 切換選單 -->
             <div class="flex space-x-6 text-sm font-medium">
                 <button onclick="showPage('dashboard', this)" class="nav-btn nav-link-active pb-1">市場看板</button>
                 <button onclick="showPage('compare', this)" class="nav-btn text-slate-500 hover:text-emerald-500 pb-1">標的比對</button>
@@ -138,11 +138,15 @@
     </div>
 
     <script>
+
         // 1. 頁面切換控制
         function showPage(pageId, btn) {
+            // 隱藏所有頁面
             document.querySelectorAll('.page-content').forEach(p => p.classList.remove('page-active'));
+            // 顯示目標頁面
             document.getElementById(pageId).classList.add('page-active');
             
+            // 更新按鈕樣式
             document.querySelectorAll('.nav-btn').forEach(b => {
                 b.classList.remove('nav-link-active', 'text-emerald-500');
                 b.classList.add('text-slate-500');
@@ -167,7 +171,7 @@
             document.getElementById('result-value').innerText = `$${Math.round(res).toLocaleString()}`;
         }
 
-        // 3. 聊天機器人邏輯
+        // 3. 聊天機器人模擬邏輯
         function toggleChat() {
             document.getElementById('chat-box').classList.toggle('hidden');
         }
